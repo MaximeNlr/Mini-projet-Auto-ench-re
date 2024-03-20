@@ -11,18 +11,15 @@
     <link rel="stylesheet" href="login.css"/>
 </head>
 <body>
-
-    
         <form action="../Data/loginData.php" method="POST">
             <div class="loginContainer">
                 <h1>Connexion</h1>
                 <?php
-            // Afficher le message d'erreur s'il existe
-            if(isset($_SESSION['error_message'])) {
-                echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
-                unset($_SESSION['error_message']); 
-            }
-            ?>
+                    if(isset($_SESSION['error_message'])) {
+                        echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
+                        unset($_SESSION['error_message']); 
+                    }
+                ?>
                 <div class="inputs">
                     <div class="input">
                         <img src="../Assets/email.png" alt=""/>

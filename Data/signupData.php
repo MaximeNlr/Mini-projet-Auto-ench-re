@@ -38,7 +38,7 @@
             $stmt = $pdo -> prepare($query);
             $stmt -> execute([$nom, $prenom, $email, $hash]);
 
-            echo '<div class="message">Inscription validée !</br>
+            echo '<div class="message"><p>Inscription validée !</p>
                     <p>Vous allez etre redirigé</p>
                 </div>
             <script>setTimeout(function() {window.location.href = "../index.php";}, 3000);</script>';

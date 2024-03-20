@@ -1,25 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Données personnelle</h1>  
-    
 <?php
+session_start();
 
-    // try{
-    //     $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
-    //     $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'UserData.php';
 
-    //     $stmt = $pdo -> query ('SELECT * FROM profiles');
-    //     echo "<ul>";
-    //     echo "<li>Votre Nom :" + $nom + "</li>";
-    //     echo "<li>Votre Prénom :" + $prenom + "</li>";
-    //     echo "<li>Votre Email :" + $email + "</li>";
-    // }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_SESSION['id_utilisateur'])) {
+            $dataUser = $_SESSION['dataUser'];
+
+            if (isset($_POST['update_nom'])) {
+                $dataUser->updateNom($_POST['nom']);
+            }
+            if (isset($_POST['update_prenom'])) {
+                $dataUser->updatePrenom($_POST['prenom']);
+            }
+            if (isset($_POST['update_email'])) {
+                $dataUser->updateEmail($_POST['email']);
+            }
+            if (isset($_POST['update_password'])) {
+                $dataUser->updatePassword($_POST['password']);
+            }
+            $_SESSION['dataUser'] = $dataUser;
+        }
+    } else {
+        if (!isset($_SESSION['dataUser'])) {
+            $dataUser = new UserData();
+            $_SESSION['dataUser'] = $dataUser;
+        }
+    }
+
+    include 'profile.view.php';
 ?>
-</body>
-</html>
