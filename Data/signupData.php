@@ -14,6 +14,7 @@
         $prenom = $_POST['prenom'];
         $email = $_POST['email'];
         $password = $_POST['mot_de_passe'];
+        $pseudo = $_POST['pseudo_utilisateur'];
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
         
@@ -24,9 +25,9 @@
             $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $req = $pdo->prepare('SELECT email FROM Utilisateur WHERE email = :email');
-            $req->execute(array(':email'=>$email));
-            $existingUser = $req -> fetch();
+            $query = $pdo->prepare('SELECT email FROM Utilisateur WHERE email = :email');
+            $query->execute(array(':email'=>$email));
+            $existingUser = $query -> fetch();
 
             if ($existingUser) {
                 echo '<script>
@@ -34,9 +35,9 @@
                       </script>';
             }else {
 
-                $query = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?)";
+                $query = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, pseudo_utilisateur) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo -> prepare($query);
-            $stmt -> execute([$nom, $prenom, $email, $hash]);
+            $stmt -> execute([$nom, $prenom, $email, $hash, $pseudo]);
 
             echo '<div class="message"><p>Inscription validée !</p>
                     <p>Vous allez etre redirigé</p>

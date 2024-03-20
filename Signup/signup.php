@@ -21,6 +21,10 @@
                     <img src="../Assets/person.png" alt =""/>
                     <input type="text" id="prenom" name="prenom" placeholder="Prénom" required />
                 </div>
+                <div class="input">
+                <img src="../Assets/person.png" alt =""/>
+                <input type="text" id="pseudo" name="pseudo_utilisateur" placeholder="Nom d'utilisateur" required />
+                </div>
             </div>  
             <div class="inputs2">
                 <div class="input">

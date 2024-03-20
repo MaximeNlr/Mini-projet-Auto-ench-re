@@ -6,15 +6,16 @@
         protected string $prenom;
         protected string $email;
         protected string $password;
+        protected string $pseudo;
     
 
-
-    protected function __construct(string $nom, string $prenom, string $email, string $password)
+    protected function __construct(string $nom, string $prenom, string $email, string $password, string $pseudo)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
         $this->password = $password;
+        $this->pseudo = $pseudo;
     }
 
     public function setNom(string $nom)
@@ -37,24 +38,9 @@
         $this->password = $password;
     }
 
-    public function getNom(): string
+    public function setPseudo(string $pseudo)
     {
-        return $this->nom;
-    }
-
-    public function getPrenom(): string
-    {
-        return $this->prenom;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
+        $this->pseudo = $pseudo;
     }
 
     public function updateNom(string $nom)
@@ -75,6 +61,11 @@
     public function updatePassword(string $password)
     {
         $this->setPassword($password);
+    }
+    
+    public function updatePseudo(string $pseudo)
+    {
+        $this->setPseudo($pseudo);
     }
 }
 
