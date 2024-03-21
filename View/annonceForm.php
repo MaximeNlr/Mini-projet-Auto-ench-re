@@ -60,7 +60,7 @@
 </head>
 <body>
     <h1>Publication de voiture à vendre</h1>
-    <form action="annonceData.php" method="post" enctype="multipart/form-data">
+    <form action="../Model/annonceData.php" method="post" enctype="multipart/form-data">
         <label for="image">Image :</label>
         <input type="file" id="image" name="image"><br>
 

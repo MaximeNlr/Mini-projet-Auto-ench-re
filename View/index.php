@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -135,52 +138,51 @@
 
 <header>
     <div>
-        <img src="./img/logo1.png" alt="Logo">
+        <img src="../View/image/logo1.png" alt="Logo">
     </div>
-    
-
-    <a href="../AnnonceForm/annonceform.php">Publier
+    <a href="../View/annonceform.php">Publier
     <div>
-        
-        <a href="../Login/login.php">Login / Se connecter</a>
+        <?php if(isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] !== null): ?>
+            <a href="../Model/logout.php">Se deconnecter</a>
+        <?php else: ?>
+            <a href="../View/Signup/signup.php">Inscription / Connexion</a>
+        <?php endif; ?>   
     </div>
 </header>
+<body>
+    <main>
+        <?php
+        try {
+            $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+            $stmt = $pdo->query('SELECT * FROM enchere ORDER BY date_expiration DESC');
+            
+            echo "<div class='article-container'>";
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<article class='article'>";
+                echo "<img src='../AnnonceForm/" . htmlspecialchars($row['image_path']) . "' alt='Image du véhicule'>";
+                echo "<h2>" . htmlspecialchars($row['titre']) . "</h2>";
+                echo "<p><strong>Modèle :</strong> " . htmlspecialchars($row['model']) . "</p>";
+                echo "<p><strong>Marque :</strong> " . htmlspecialchars($row['marque']) . "</p>";
+                echo "<p><strong>Puissance :</strong> " . htmlspecialchars($row['puissance']) . "</p>";
+                echo "<p><strong>Année :</strong> " . htmlspecialchars($row['annee']) . "</p>";
+                echo "<p><strong>Description :</strong> " . htmlspecialchars($row['description']) . "</p>";
+                echo "<p><strong>Prix de départ :</strong> " . htmlspecialchars($row['prix_depart']) . " €</p>";
+                echo "<p><strong>Date d'éxpiration :</strong> " . htmlspecialchars($row['date_expiration']) . "</p>";
+                echo "<a href='../DetailsAnnonces/detailsannonce' class='details-button'>Détails</a>"; // Corrigé ici
+                echo "</article>";
+            }
 
-<main>
-    <?php
-    try {
-        // Connexion à la base de données
-        $pdo = new PDO('mysql:host=localhost;dbname=ddb_v_enchere', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-        // Sélection des articles
-        $stmt = $pdo->query('SELECT * FROM vehicule ORDER BY date_expiration DESC');
+            echo "</div>";
         
-        echo "<div class='article-container'>";
-        
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<article class='article'>";
-            echo "<img src='../AnnonceForm/" . htmlspecialchars($row['image_path']) . "' alt='Image du véhicule'>";
-            echo "<h2>" . htmlspecialchars($row['titre']) . "</h2>";
-            echo "<p><strong>Modèle :</strong> " . htmlspecialchars($row['model']) . "</p>";
-            echo "<p><strong>Marque :</strong> " . htmlspecialchars($row['marque']) . "</p>";
-            echo "<p><strong>Puissance :</strong> " . htmlspecialchars($row['puissance']) . "</p>";
-            echo "<p><strong>Année :</strong> " . htmlspecialchars($row['annee']) . "</p>";
-            echo "<p><strong>Description :</strong> " . htmlspecialchars($row['description']) . "</p>";
-            echo "<p><strong>Prix de départ :</strong> " . htmlspecialchars($row['prix_depart']) . " €</p>";
-            echo "<p><strong>Date d'éxpiration :</strong> " . htmlspecialchars($row['date_expiration']) . "</p>";
-            echo "<a href='../DetailsAnnonces/detailsannonce' class='details-button'>Détails</a>"; // Corrigé ici
-            echo "</article>";
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
         }
-
-        echo "</div>";
-    
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
-    }
-    ?>
-</main>
-
+        ?>
+    </main>
+</body>
 <footer>
     VIP ENCHERE copyright © 2024
 </footer>

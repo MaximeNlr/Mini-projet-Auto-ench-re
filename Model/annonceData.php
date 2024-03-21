@@ -1,6 +1,7 @@
 <?php
+session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        require_once "vehicule.class.php";
+        require_once "../Controller/vehicule.class.php";
         // Récupération des données du formulaire
         $titre = $_POST['titre'];
         $model = $_POST['model'];
@@ -14,7 +15,7 @@
         $image = $_FILES['image'];
 
         // le chemin de déstination pour l'enregistrement de l'image
-        $targetDir = "image/";
+        $targetDir = "../View/image/";
         $targetFile = $targetDir . basename($image['name']);
 
         // déplacement du fichier télecharger vers le dossier de destination
@@ -25,29 +26,29 @@
         }
 
         $date_expiration = $_POST['date_expiration'];
-        
+
+        if(isset($_SESSION['id_utilisateur'])) {
+            $userId = $_SESSION['id_utilisateur'];
+
         try {
-            // Connexion à la base de données
-            $pdo = new PDO('mysql:host=localhost;dbname=ddb_v_enchere', 'root', '');
+            $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Préparation de la requête d'insertion
-            $query = "INSERT INTO vehicule (titre, model, marque, puissance, annee, description, prix_depart, image_path, date_expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO vehicule (id_utilisateur, titre, model, marque, puissance, annee, description, prix_depart, image_path, date_expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($query);
 
-            // Exécution de la requête
-            $stmt->execute([$titre, $model, $marque, $puissance, $annee, $description, $prix_depart, $targetFile, $date_expiration]);
+            $stmt->execute([$userId, $titre, $model, $marque, $puissance, $annee, $description, $prix_depart, $targetFile, $date_expiration]);
             
 
             echo '<div class="message"><p>Article publier !</p>
                                 <p>Vous allez etre redirigé</p>
                             </div>
-                            <script>setTimeout(function() {window.location.href = "../Home/index.php";}, 3000);</script>';
+                            <script>setTimeout(function() {window.location.href = "../View/index.php";}, 3000);</script>';
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
         }
     } else {
-        // Redirection vers le formulaire si la méthode n'est pas POST
         header('Location: annonceform.php');
     }
+}
 ?>
