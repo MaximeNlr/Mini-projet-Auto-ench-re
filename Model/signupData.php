@@ -42,13 +42,13 @@
             echo '<div class="message"><p>Inscription validée !</p>
                     <p>Vous allez etre redirigé</p>
                 </div>
-            <script>setTimeout(function() {window.location.href = "../index.php";}, 3000);</script>';
+            <script>setTimeout(function() {window.location.href = "../View/index.php";}, 3000);</script>';
             }
         } catch (PDOException $e) {
             echo "Erreur : " . $e -> getMessage();
         }
     } else {
-        header('location: ../Signup/signup.php');
+        header('location: ./View/Signup/signup.php');
     }
 ?>
 </body>

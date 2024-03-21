@@ -28,16 +28,16 @@
                     echo '<div class="message"><p>Connexion réussie !</p>
                             <p>Vous allez etre redirigé</p>
                         </div>
-                        <script>setTimeout(function() {window.location.href = "../profile.view.php";}, 3000);</script>';
+                        <script>setTimeout(function() {window.location.href = "../View/profile.view.php";}, 3000);</script>';
                 } else {
                     $_SESSION['error_message'] = "L'email et/ou le mot de passe sont incorrects. Veuillez réessayer.";
-                    header('location: ../Login/login.php');
+                    header('location: ../View/Login/login.php');
                 }
             } catch (PDOException $e) {
                 echo "Erreur : " .$e -> getMessage();
             }
         } else {
-            header('location: ../Login/login.php');
+            header('location: ../View/Login/login.php');
         }
     }
 ?> 

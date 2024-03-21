@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="login.css"/>
 </head>
 <body>
-        <form action="../Data/loginData.php" method="POST">
+        <form action="../../Model/loginData.php" method="POST">
             <div class="loginContainer">
                 <h1>Connexion</h1>
                 <?php

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="signup.css"/>
 </head>
 <body>
-    <form action="../Data/signupData.php" method="POST">
+    <form action="../../Model/signupData.php" method="POST">
         <div class="headerForm">
             <div class="text">Inscription</div>
             <div class="underline"></div>
