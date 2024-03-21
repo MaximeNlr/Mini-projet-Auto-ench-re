@@ -10,6 +10,28 @@
             font-family: Arial, sans-serif;
         }
 
+        header {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed; 
+            width: 100%;
+            top: 0; 
+            z-index: 1000; 
+            -webkit-box-shadow: 0px 17px 14px -12px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 17px 14px -12px rgba(66, 68, 90, 1);
+            box-shadow: 0px 17px 14px -12px rgba(66, 68, 90, 1);
+            border-bottom: solid 1px  #FFD700;
+        }
+
+        header img {
+            width: 150px;
+            height: 80px;
+        }
+
         h1 {
             color: #fff;
             text-align: center;
@@ -58,7 +80,20 @@
         }
     </style>
 </head>
+
+<header>
+    <div>
+        <img src="../Home/img/logo1.png" alt="Logo">
+    </div>
+    
+    <div>
+        
+        <a href="../Login/login.php">Login / Se connecter</a>
+    </div>
+</header>
+
 <body>
+    
     <h1>Publication de voiture à vendre</h1>
     <form action="annonceData.php" method="post" enctype="multipart/form-data">
         <label for="image">Image :</label>

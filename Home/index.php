@@ -49,6 +49,13 @@
             flex-wrap: wrap;
         }
 
+        .article:hover {
+            transform: scale(0.95); /* Réduire légèrement la taille de l'article survolé */
+            transition: transform 0.3s ease; /* Ajouter une transition fluide */
+}
+
+
+
         .article {
             width: calc(50% - 20px); /* La moitié de la largeur de l'écran, avec un peu de marge */
             margin: 10px;
@@ -142,7 +149,7 @@
     <a href="../AnnonceForm/annonceform.php">Publier
     <div>
         
-        <a href="../Login/login.php">Login / Se connecter</a>
+        <a href="../Login/login.php"> Se connecter</a>
     </div>
 </header>
 
@@ -162,14 +169,9 @@
             echo "<article class='article'>";
             echo "<img src='../AnnonceForm/" . htmlspecialchars($row['image_path']) . "' alt='Image du véhicule'>";
             echo "<h2>" . htmlspecialchars($row['titre']) . "</h2>";
-            echo "<p><strong>Modèle :</strong> " . htmlspecialchars($row['model']) . "</p>";
-            echo "<p><strong>Marque :</strong> " . htmlspecialchars($row['marque']) . "</p>";
-            echo "<p><strong>Puissance :</strong> " . htmlspecialchars($row['puissance']) . "</p>";
-            echo "<p><strong>Année :</strong> " . htmlspecialchars($row['annee']) . "</p>";
-            echo "<p><strong>Description :</strong> " . htmlspecialchars($row['description']) . "</p>";
             echo "<p><strong>Prix de départ :</strong> " . htmlspecialchars($row['prix_depart']) . " €</p>";
             echo "<p><strong>Date d'éxpiration :</strong> " . htmlspecialchars($row['date_expiration']) . "</p>";
-            echo "<a href='../DetailsAnnonces/detailsannonce' class='details-button'>Détails</a>"; // Corrigé ici
+            echo "<a href='../DetailsAnnonces/detailsannonce.php?id_vehicule=" . htmlspecialchars($row['id_vehicule']) . "' class='details-button'>Détails</a>";
             echo "</article>";
         }
 

@@ -15,7 +15,7 @@
             $password = $_POST['mot_de_passe'];
 
             try {
-                $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
+                $pdo = new PDO('mysql:host=localhost;dbname=ddb_v_enchere', 'root', '');
                 $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $query = "SELECT id_utilisateur, mot_de_passe FROM Utilisateur WHERE email = ?";
                 $stmt = $pdo -> prepare($query);
