@@ -8,7 +8,7 @@ if (isset($_SESSION['id_utilisateur'])) {
     $query->execute();
 
     $userData = $query->fetch(PDO::FETCH_ASSOC);
-    header('location: ./View/profile.view.php')
+    header('location: ../View/profile.view.php');
 } else {
     $userData = false;
 }

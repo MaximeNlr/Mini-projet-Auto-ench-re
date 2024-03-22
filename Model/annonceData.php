@@ -2,7 +2,6 @@
 session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require_once "../Controller/vehicule.class.php";
-        // Récupération des données du formulaire
         $titre = $_POST['titre'];
         $model = $_POST['model'];
         $marque = $_POST['marque'];
@@ -11,14 +10,10 @@ session_start();
         $description = $_POST['description'];
         $prix_depart = $_POST['prix_depart'];
 
-        // recupération du fichier l'image
         $image = $_FILES['image'];
-
-        // le chemin de déstination pour l'enregistrement de l'image
-        $targetDir = "../View/image/";
+        
+        $targetDir = "../../View/images/";
         $targetFile = $targetDir . basename($image['name']);
-
-        // déplacement du fichier télecharger vers le dossier de destination
         if (move_uploaded_file($image["tmp_name"], $targetFile)) {
             echo "L'image a été télécharger avec succès. ";
         } else { 
@@ -29,7 +24,7 @@ session_start();
 
         if(isset($_SESSION['id_utilisateur'])) {
             $userId = $_SESSION['id_utilisateur'];
-
+            var_dump($userId);
         try {
             $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -43,12 +38,12 @@ session_start();
             echo '<div class="message"><p>Article publier !</p>
                                 <p>Vous allez etre redirigé</p>
                             </div>
-                            <script>setTimeout(function() {window.location.href = "../View/index.php";}, 3000);</script>';
+                            <script>setTimeout(function() {window.location.href = "../View/Home/index.php";}, 3000);</script>';
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
         }
     } else {
-        header('Location: annonceform.php');
+        header('Location: ../View/Annonce/annonceform.php');
     }
 }
 ?>

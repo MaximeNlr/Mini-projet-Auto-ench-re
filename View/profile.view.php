@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-    include './Model/get.user.data.php';
+    include '../Model/get.user.data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
 <?php
     if ($userData) {
-        echo '<form action="../profile.php" method="POST">';
+        echo '<form action="../Model/profile.php" method="POST">';
         echo '<p>Votre nom : <input type="text" name="nom" value="' . $userData['nom'] . '"></p>';
         echo '<p>Votre prénom : <input type="text" name="prenom" value="' . $userData['prenom'] . '"></p>';
         echo '<p>Votre pseudo : <input type="text" name="pseudo_utilisateur" value="' . $userData['pseudo_utilisateur'] . '"></p>';

@@ -3,7 +3,7 @@
 
     if(isset($_SESSION['id_utilisateur'])) {
         session_destroy();
-        header("location: ../View/index.php");
+        header("location: ../View/Home/index.php");
         exit();
     }
 ?>

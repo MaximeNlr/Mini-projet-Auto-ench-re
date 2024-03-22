@@ -38,11 +38,13 @@
                 $query = "INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, pseudo_utilisateur) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo -> prepare($query);
             $stmt -> execute([$nom, $prenom, $email, $hash, $pseudo]);
+            $userId = $pdo->lastInsertId();
+            $_SESSION['id_utilisateur'] = $userId;
 
             echo '<div class="message"><p>Inscription validée !</p>
                     <p>Vous allez etre redirigé</p>
                 </div>
-            <script>setTimeout(function() {window.location.href = "../View/index.php";}, 3000);</script>';
+            <script>setTimeout(function() {window.location.href = "../View/Home/index.php";}, 3000);</script>';
             }
         } catch (PDOException $e) {
             echo "Erreur : " . $e -> getMessage();

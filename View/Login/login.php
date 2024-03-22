@@ -10,6 +10,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="login.css"/>
 </head>
+<header>
+    <img src="../../View/images/logo1.png" alt="Logo">
+</header>
 <body>
         <form action="../../Model/loginData.php" method="POST">
             <div class="loginContainer">

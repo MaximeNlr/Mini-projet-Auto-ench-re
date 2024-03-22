@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="signup.css"/>
 </head>
+<header>
+    <img src="../../View/images/logo1.png" alt="Logo">
+</header>
 <body>
     <form action="../../Model/signupData.php" method="POST">
         <div class="headerForm">

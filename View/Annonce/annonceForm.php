@@ -1,66 +1,21 @@
+<?php
+session_start();
+    if (!isset($_SESSION['id_utilisateur']) || $_SESSION['id_utilisateur'] === null) {
+        header('Location: ../View/Signup/signup.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="annonce.css"/>
     <title>Publication de voiture à vendre</title>
-    <style>
-                body {
-            background-color: #222;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            color: #fff;
-            text-align: center;
-        }
-
-        form {
-            margin: 0 auto;
-            width: 50%;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #555;
-            background-color: #333;
-            color: #fff;
-        }
-
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #555;
-            background-color: #333;
-            color: #fff;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
     <h1>Publication de voiture à vendre</h1>
-    <form action="../Model/annonceData.php" method="post" enctype="multipart/form-data">
+    <form action="../../Model/annonceData.php" method="post" enctype="multipart/form-data">
         <label for="image">Image :</label>
         <input type="file" id="image" name="image"><br>
 

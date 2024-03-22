@@ -28,7 +28,7 @@
                     echo '<div class="message"><p>Connexion réussie !</p>
                             <p>Vous allez etre redirigé</p>
                         </div>
-                        <script>setTimeout(function() {window.location.href = "../View/index.php";}, 3000);</script>';
+                        <script>setTimeout(function() {window.location.href = "../View/Home/index.php";}, 3000);</script>';
                 } else {
                     $_SESSION['error_message'] = "L'email et/ou le mot de passe sont incorrects. Veuillez réessayer.";
                     header('location: ../View/Login/login.php');
