@@ -6,9 +6,7 @@ body {
     background-color: #1a1a1a;
     color: #ffffff;
     font-family: Arial, sans-serif;
-    margin-top: 90px;
-    padding: 0;
-
+    min-height: 100vh;
 }
 
 header {
@@ -39,25 +37,22 @@ header img {
     
 }
 
-
-footer {
-    background-color: #333333;
-    color: #ffffff;
-    padding: 10px;
-    text-align: center;
-    border-bottom: grey;
-}
-
 .article-container {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
+    padding-top: 100px;
 }
 
 .valueContainer {
     display: flex;
     flex-direction:column;
     gap: 10px;
+}
+
+.valueColumn {
+    display: flex;
+    justify-content: space-between;
 }
 
 .article {
@@ -85,10 +80,9 @@ article {
 }
 
 article img {
-    height: auto;
+    height: 250px;
     border-radius: 5px;
     max-width: 100%;
-    height: auto; 
     
     
 }
@@ -97,6 +91,7 @@ article h2 {
     color: #ffffff;
     border-bottom: solid 1px #FFD700;
     text-align: center;
+    margin: 10px;
 }
 
 article p {
@@ -106,8 +101,8 @@ article p {
 .details-button {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #FFD700;
+    color: #000000;
     text-decoration: none;
     text-align: center;
     border-radius: 4px;
@@ -115,27 +110,8 @@ article p {
 }
 
 .details-button:hover {
-    background-color: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table th,
-table td {
-    padding: 8px;
-    border: 1px solid #ffffff;
-}
-
-table th {
-    background-color: #444444;
-}
-
-table td {
-    background-color: #555555;
+    background-color: #ffffff;
+    color: black;
 }
 
 a {
@@ -145,4 +121,12 @@ a {
 
 a:hover {
     color: #cccccc;
+}
+
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-bottom: grey;
 }

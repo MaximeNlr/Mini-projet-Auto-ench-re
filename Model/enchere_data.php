@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $annonceId = $_POST['annonce_id'];
 
     try {
-        $pdo = new PDO('mysql:host=localhost;dbname=ddb_v_enchere', 'root', '');
+        $pdo = new PDO('mysql:host=localhost;dbname=bdd_auto_enchere', 'root', 'root');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $query = "UPDATE vehicule SET prix_depart = ? WHERE id_vehicule = ?";

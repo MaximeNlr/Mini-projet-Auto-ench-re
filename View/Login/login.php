@@ -9,32 +9,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="login.css"/>
+    <link rel="icon" type="image/png" href="../../View/images/logo1.png" />
 </head>
 <header>
     <img src="../../View/images/logo1.png" alt="Logo">
 </header>
 <body>
-        <form action="../../Model/loginData.php" method="POST">
-            <div class="loginContainer">
-                <h1>Connexion</h1>
-                <?php
-                    if(isset($_SESSION['error_message'])) {
-                        echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
-                        unset($_SESSION['error_message']); 
-                    }
-                ?>
+    <?php
+        if(isset($_SESSION['error_message'])) {
+            echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']); 
+        }
+    ?>           
+    <div class="container">
+        <div class="signin">
+            <form action="../../Model/login_data.php" method="POST">
+                <h2>Connexion</h2>
                 <div class="inputs">
-                    <div class="input">
-                        <img src="../Assets/email.png" alt=""/>
-                        <input type="email" id="email" name="email" placeholder="Email" required />
-                    </div>
-                    <div class="input">
-                        <img src="../Assets/password.png" alt=""/>
-                        <input type="password" id="password" name="mot_de_passe" placeholder="Mot de passe" required />
-                    </div>
-                    <input type="submit" class="submit" />
+                    <input type="text" name="email" placeholder="Email" required/>
                 </div>
-            </div>  
-        </form>
+                <div class="inputs">
+                    <input type="password" name="mot_de_passe" placeholder="Mot de passe" required/>
+                </div>
+                <input type="submit" value="Valider" id="btn">
+            </form>
+            <div class="right-side">
+                <img src="../../View/images/form_background.jpg" alt="" />
+            </div>
+        </div>
+    </div>
 </body>
 </html>

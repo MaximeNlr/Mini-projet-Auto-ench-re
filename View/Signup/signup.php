@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="signup.css"/>
+    <link rel="icon" type="image/png" href="../../View/images/logo1.png" />
 </head>
 <header>
     <img src="../../View/images/logo1.png" alt="Logo">
 </header>
 <body>
-    <form action="../../Model/signupData.php" method="POST">
+    <form action="../../Model/signup_data.php" method="POST">
         <div class="headerForm">
             <div class="text">Inscription</div>
             <div class="underline"></div>
